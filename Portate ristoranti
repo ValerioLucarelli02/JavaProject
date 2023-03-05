@@ -1,0 +1,76 @@
+package main;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+public class Portata {
+    //Comandi di input
+	private String nome, ingredienti;
+	private int listino;
+	private double costo;
+   //creo una lista di array
+	
+	List<Portata> ListaPortata = new ArrayList<Portata>();
+    
+	public Portata(String nome, String ingredienti, int listino, double costo) {
+		this.nome = nome;
+		this.ingredienti = ingredienti;
+		this.listino = listino;
+		this.costo = costo;
+        //creo le tre portate
+		Portata Portata1 = new Portata("Margherita", "Pizza, Sugo, Mozzarella, Basilico", 1, 7);
+		Portata Portata2 = new Portata("Risotto", "Scampi, Sugo, Riso", 2, 13);
+		Portata Portata3 = new Portata("Amatriciana", "Pasta, Guanciale, Sugo, Pecorino", 3, 10);
+
+		ListaPortata.add(Portata1);
+		ListaPortata.add(Portata2);
+		ListaPortata.add(Portata3);
+
+	}
+
+	public void stampaPortate() {
+		Iterator<Portata> it_Portata = ListaPortata.iterator();
+       
+		while (it_Portata.hasNext()) {
+			Portata test_Portata = it_Portata.next();
+			System.out.println(test_Portata.getNome());
+			System.out.println(test_Portata.getIngredienti());
+			System.out.println(test_Portata.getListino());
+		}
+	}
+     //imposto getter e setter per tutti i metodi
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(String ingredienti) {
+		this.ingredienti = ingredienti;
+	}
+
+	public int getListino() {
+		return listino;
+	}
+
+	public void setListino(int listino) {
+		this.listino = listino;
+	}
+
+	public double getCosto() {
+		return costo;
+	}
+
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+
+}
