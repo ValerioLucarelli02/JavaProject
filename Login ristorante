@@ -1,0 +1,166 @@
+package main;
+
+
+	
+	
+	import java.util.ArrayList;
+	import java.util.Iterator;
+	import java.util.List;
+	import java.util.Scanner;
+	
+	public class Login{
+
+
+
+
+	
+
+	public static void main(String[] args) 
+	{
+
+		
+			
+
+			
+			List <Utente> Utenti = new ArrayList<>();
+			Utente Leonard = new Utente("Ciao ","Roger ");
+			Utenti.add(Leonard);
+			
+			
+			
+			boolean success0 = true;
+			boolean success1 = true;
+			boolean successLoginMenu = true;
+			boolean successRegistration = true;
+			boolean successLogin = true;
+		//imposto le variabili di login
+			
+			
+			double costo = 0;
+			//dichiaro variabile del costo
+			
+	   while (successLoginMenu) {
+			//faccio partire il primo ciclo while del menu di login
+			System.out.println("Inserire il numero, per usufruire del servizio desiderato");
+			
+			System.out.println ("1)Sign in.");
+			System.out.println ("2)Sign up.");
+			System.out.println ("3)Exit.");
+      //stampo le tre opzioni di login
+			
+			Scanner scansuccess = new Scanner(System.in);
+			String comandoInseritosuccess = scansuccess.nextLine();
+      //uso println per fare si che l'utente possa scrivere in console
+			
+			if (comandoInseritosuccess.equals("1")) {
+				//scrivo il primo if nel caso in cui l'utente voglia fare la registrazione
+			   
+				while (successRegistration) {
+				
+				System.out.println("Inserire Id:");
+			   Scanner scanIDRegistrazione = new Scanner(System.in);
+				String IDRegistrazione = scanIDRegistrazione.nextLine();
+				System.out.println ("Inserire password:");
+				Scanner scanPasswordRegistrazione = new Scanner(System.in);
+				String passwordRegistrazione = scanPasswordRegistrazione.nextLine();
+				
+				Utente u = new Utente (IDRegistrazione,passwordRegistrazione);
+				
+				for (int i = 0; i<Utenti.size();i++) {
+					if((Utenti.get(i).getID().equals(u.getID()))) {
+						System.out.println("ID Già in uso, sceglierne un altro.");
+            //stampa di errore nel caso in cui l'id sia già in uso
+					}
+					else {
+						System.out.println("Registration was successful.");
+						System.out.println("ID: "+IDRegistrazione);
+						System.out.println("Password: "+passwordRegistrazione);
+						
+						successRegistration = false;
+					}
+					
+					
+				}          //utilizzo il metodo add per aggiungere l'utente
+				           
+				           Utenti.add(u); 
+				
+				}
+				
+			}
+			
+			else if (comandoInseritosuccess.equals("3")) {
+				
+				System.out.println("Programma terminato.");
+				System.exit(0);
+				
+			}
+			
+			else if  (comandoInseritosuccess.equals("2")) {
+				//nel caso in cui l'utente si voglia loggare
+        //parte questo ciclo while
+				while (successLogin) {
+				
+					System.out.println("Inserire ID:");
+					Scanner scanIDLogin = new Scanner(System.in);
+					String IDLogin = scanIDLogin.nextLine();
+					
+					Iterator<Utente> it_Utente = Utenti.iterator();
+
+					while (it_Utente.hasNext()){
+						 Utente test_utente = it_Utente.next();
+						if (test_utente.getID().equals(IDLogin)) {
+							
+							System.out.println("Inserire password:");
+							Scanner scanPasswordLogin = new Scanner(System.in);
+							String passwordLogin = scanPasswordLogin.nextLine();
+							
+								if (test_utente.getPassword().equals(passwordLogin)) {
+								
+									System.out.println("Accesso riuscito.");
+									
+									successLogin=false ;
+									successLoginMenu = false;
+								     }
+		}
+	}
+		}
+				
+			}
+			
+			else {
+				
+			   System.out.println("Comando non valido.");
+			
+		
+			}
+			
+	         }
+			
+			while (success0) {
+				//nel caso in cui il login sia andato a buon fine
+        //chiedo all'utente cosa voglia fare, se ordinare o uscire
+				System.out.println ("Benvenuto!");
+				System.out.println ("Inserire il numero corretto per l'azione da voler eseguire.");
+				System.out.println("1)Ordinare.");
+				System.out.println("2)Uscire.");
+				
+				Scanner scan0 = new Scanner(System.in);
+				String comandoInserito0 = scan0.nextLine();
+				
+				if (comandoInserito0.equals("2")) {
+					
+					if (costo>0) {
+						System.out.println("Totale da pagare:");
+						System.out.println("$"+costo);
+					}
+					
+					success0=false;
+					
+					System.out.println ("Grazie per averci scelto, lo staff le augura una buona giornata");
+					System.out.println ("Arrivederla");
+				}
+				
+				
+			}
+}
+	}
